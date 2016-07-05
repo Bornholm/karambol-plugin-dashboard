@@ -13,5 +13,7 @@
         "DashboardPlugin\\": "src/"
       }
     },
-    "require": {}
+    "require": {
+        "fguillot/picofeed": "^0.1.23"
+    }
 }
