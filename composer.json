@@ -13,6 +13,5 @@
         "DashboardPlugin\\": "src/"
       }
     },
-    "minimum-stability": "stable",
     "require": {}
 }

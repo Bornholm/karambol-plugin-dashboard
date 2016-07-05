@@ -4,5 +4,7 @@ plugins:
 
 assets:
   dashboard:
-    - { src: plugins/DashboardPlugin/public/js, dest: public/plugins/dashboard/js }
-    - { src: plugins/DashboardPlugin/public/css, dest: public/plugins/dashboard/css }
+    - src: vendor/bornholm/karambol-plugin-dashboard/public/js
+      dest: public/plugins/dashboard/js
+    - src: vendor/bornholm/karambol-plugin-dashboard/public/css
+      dest: public/plugins/dashboard/css
