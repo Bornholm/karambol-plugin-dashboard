@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  
+  {{ appendScript([
+      'plugins/dashboard/js//jsrpc/client.js',
+      'plugins/dashboard/js/karambol-widget.js',
+      'plugins/dashboard/js/widgets/test.js'
+    ])
+  }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+  "name": "karambol-plugin-dashboard",
+  "version": "0.0.0",
+  "description": "Karambol \"dashboard\" plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit Test/js"
+  },
+  "author": "William Petit <william.petit@ptitcloud.fr>",
+  "private": "true",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
+  }
+}

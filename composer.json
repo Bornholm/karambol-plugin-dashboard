@@ -1,0 +1,18 @@
+{
+    "name": "bornholm/karambol-plugin-dashboard",
+    "description": "A dashboard plugin for Karambol",
+    "license": "AGPL-3.0",
+    "authors": [
+        {
+            "name": "William Petit",
+            "email": "william.petit@ptitcloud.fr"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "DashboardPlugin\\": "src/"
+      }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}

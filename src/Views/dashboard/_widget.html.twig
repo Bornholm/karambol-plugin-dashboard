@@ -1,0 +1,10 @@
+<div class="col-md-{{widget.columnWidth}}">
+  <div class="panel panel-default karambol-widget-panel">
+    <div class="panel-heading">
+      <h4 class="panel-title">{{widget.label}}</h4>
+    </div>
+    <div class="panel-body">
+      <iframe class="karambol-widget" src="{{widget.url}}" {% if widget.height is defined %}style="height:{{widget.height}}px"{% endif %}></iframe>
+    </div>
+  </div>
+</div>
