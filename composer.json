@@ -14,6 +14,10 @@
       }
     },
     "require": {
-        "fguillot/picofeed": "^0.1.23"
+        "fguillot/picofeed": "^0.1.23",
+        "moment/moment": "^2.14"
+    },
+    "config": {
+      "secure-http": false
     }
 }

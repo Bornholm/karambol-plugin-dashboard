@@ -8,16 +8,16 @@ use PicoFeed\Reader\Reader;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class RSSWidgetController extends Controller {
+class FeedWidgetController extends Controller {
 
   public function mount(KarambolApp $app) {
-    $app->get('/widgets/rss', [$this, 'showRSSWidget'])->bind('widget_rss');
-    $app->get('/widgets/rss/feed', [$this, 'fetchFeed'])->bind('widget_rss_feed');
+    $app->get('/widgets/feed', [$this, 'showFeedWidget'])->bind('widget_feed');
+    $app->get('/widgets/feed/fetch', [$this, 'fetchFeed'])->bind('widget_feed_fetch');
   }
 
-  public function showRSSWidget() {
+  public function showFeedWidget() {
     $twig = $this->get('twig');
-    return $twig->render('widgets/rss/index.html.twig');
+    return $twig->render('widgets/feed/index.html.twig');
   }
 
   public function fetchFeed() {

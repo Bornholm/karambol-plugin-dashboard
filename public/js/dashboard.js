@@ -6,6 +6,18 @@
 
   server.expose({
 
+    getOptions: function(params, context, cb) {
+      var options = $(context.widgetFrame).data('widgetOptions');
+      if(options) {
+        try {
+          options = JSON.parse(atob(options));
+        } catch(err) {
+          return cb(new Error('Couldn\'t parse widget\'s options !'))
+        }
+      }
+      return cb(null, options || {});
+    },
+
     setPreferredHeight: function(params, context, cb) {
       if(!('height' in params)) throw new Error('You must provide a "height" parameter.');
       if(params.height !== +params.height) throw new Error('The height parameter must be a number.');

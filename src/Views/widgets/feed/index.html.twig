@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block head_style %}
+  {{ parent() }}
+  <style>
+    body.karambol {
+      padding-top: 10px !important;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="feed" class="list-group">
+          <h3>Chargement...</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <template id="feed-item-template">
+    <a href="#" class="list-group-item" target="_blank">
+      <h4 class="list-group-item-heading"><small class="item-heading-date">Test<small></h4>
+      <p class="list-group-item-text"></p>
+    </a>
+  </template>
+  <script type="text/javascript">
+    (function(__CONFIG__) {
+      'use strict';
+      __CONFIG__.fetchFeedURL = "{{ url('widget_feed_fetch') }}";
+    }(this.__CONFIG__ = this.__CONFIG__ || {}));
+  </script>
+  {{ appendScript([
+      'vendor/moment/min/moment-with-locales.js',
+      'plugins/dashboard/js/jsrpc/client.js',
+      'plugins/dashboard/js/karambol-widget.js',
+      'plugins/dashboard/js/widgets/feed/feed-widget.js'
+    ])
+  }}
+{% endblock %}

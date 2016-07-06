@@ -8,3 +8,5 @@ assets:
       dest: public/plugins/dashboard/js
     - src: vendor/bornholm/karambol-plugin-dashboard/public/css
       dest: public/plugins/dashboard/css
+    - src: vendor/moment/moment
+      dest: public/vendor/moment

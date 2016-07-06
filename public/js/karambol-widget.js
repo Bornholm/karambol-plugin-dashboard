@@ -30,6 +30,11 @@
     return this;
   };
 
+  KWidget.getOptions = function(cb) {
+    client.invoke('getOptions', {}, cb);
+    return this;
+  };
+
   function sendHandler(message) {
     if(isPageLoaded) {
       console.log('client', message);

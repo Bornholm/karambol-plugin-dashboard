@@ -15,6 +15,7 @@ class DashboardPlugin implements PluginInterface
     $this->addPluginViews($app);
     $this->addPluginTranslation($app);
     $this->addControllers($app);
+    $this->addTwigHelpers($app);
   }
 
   public function addPluginTranslation(KarambolApp $app) {
@@ -31,7 +32,7 @@ class DashboardPlugin implements PluginInterface
   public function addControllers(KarambolApp $app) {
     $dashboardCtrl = new DashboardController();
     $dashboardCtrl->bindTo($app);
-    $rssWidgetCtrl = new WidgetController\RSSWidgetController();
+    $rssWidgetCtrl = new WidgetController\FeedWidgetController();
     $rssWidgetCtrl->bindTo($app);
   }
 
@@ -39,6 +40,14 @@ class DashboardPlugin implements PluginInterface
     $twigPaths = $app['twig.path'];
     array_unshift($twigPaths, __DIR__.'/Views');
     $app['twig.path'] = $twigPaths;
+  }
+
+  public function addTwigHelpers($app) {
+    $app['twig'] = $app->share($app->extend('twig', function($twig) {
+      $twig->addFilter(new \Twig_SimpleFilter('b64_encode', 'base64_encode'));
+      $twig->addFilter(new \Twig_SimpleFilter('b64_decode', 'base64_decode'));
+      return $twig;
+    }));
   }
 
 }
