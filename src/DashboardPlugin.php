@@ -4,14 +4,16 @@ namespace DashboardPlugin;
 
 use Karambol\Plugin\PluginInterface;
 use Karambol\KarambolApp;
-use DashboardPlugin\Controller\DashboardController;
-use DashboardPlugin\Controller\Widget as WidgetController;
+use Karambol\Menu as Menu;
+use Karambol\Menu\Menus;
+use DashboardPlugin\Provider\DashboardServiceProvider;
 
 class DashboardPlugin implements PluginInterface
 {
 
   public function boot(KarambolApp $app, array $options) {
-    $this->addPluginPages($app);
+    $this->addServices($app);
+    $this->addSubscribers($app);
     $this->addPluginViews($app);
     $this->addPluginTranslation($app);
     $this->addControllers($app);
@@ -20,20 +22,33 @@ class DashboardPlugin implements PluginInterface
 
   public function addPluginTranslation(KarambolApp $app) {
     $app['translator'] = $app->share($app->extend('translator', function($translator) {
-      $translator->addResource('yaml', __DIR__.'/locales/fr.yml', 'fr');
+      $translator->addResource('yaml', __DIR__.'/../locales/fr.yml', 'fr');
       return $translator;
     }));
   }
 
-  public function addPluginPages(KarambolApp $app) {
+  public function addServices(KarambolApp $app) {
+    $app->register(new DashboardServiceProvider());
+  }
+
+  public function addSubscribers(KarambolApp $app) {
+    $app['menus']->getMenu(Menus::ADMIN_MAIN)
+      ->addSubscriber(new DashboardAdminMenuSubscriber($app))
+    ;
     $app['pages']->addSubscriber(new DashboardPagesSubscriber($app));
+    $app['dashboard']->getBlueprints()->addSubscriber(new WidgetBlueprintsSubscriber($app));
   }
 
   public function addControllers(KarambolApp $app) {
-    $dashboardCtrl = new DashboardController();
-    $dashboardCtrl->bindTo($app);
-    $rssWidgetCtrl = new WidgetController\FeedWidgetController();
-    $rssWidgetCtrl->bindTo($app);
+    $controllers = [
+      'DashboardPlugin\Controller\DashboardController',
+      'DashboardPlugin\Controller\Widget\FeedWidgetController',
+      'DashboardPlugin\Controller\Admin\WidgetBlueprintsController'
+    ];
+    foreach($controllers as $controllerClass) {
+      $controller = new $controllerClass();
+      $controller->bindTo($app);
+    }
   }
 
   public function addPluginViews($app) {

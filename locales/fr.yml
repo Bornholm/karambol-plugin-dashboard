@@ -1,3 +1,17 @@
 pages:
   plugins:
     dashboard: Tableau de bord
+plugins:
+  dashboard:
+    widgets: Widgets
+    admin:
+      widgets:
+        name: Nom du widget
+        description: Description
+        url: URL
+        actions: Actions
+        add_widget: Ajouter un widget
+        system_widget: Widget système
+        system_widget_help: Ceci est un widget "système", fourni automatiquement par un des plugins de Karambol. Il n'est pas éditable.
+      blueprints:
+        feed_description: Un widget permettant d'afficher un flux RSS ou Atom.

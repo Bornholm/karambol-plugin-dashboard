@@ -11,13 +11,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class FeedWidgetController extends Controller {
 
   public function mount(KarambolApp $app) {
-    $app->get('/widgets/feed', [$this, 'showFeedWidget'])->bind('widget_feed');
-    $app->get('/widgets/feed/fetch', [$this, 'fetchFeed'])->bind('widget_feed_fetch');
+    $app->get('/widgets/feed', [$this, 'showFeedWidget'])->bind('plugin_dashboard_widget_feed');
+    $app->get('/widgets/feed/fetch', [$this, 'fetchFeed'])->bind('plugin_dashboard_widget_feed_fetch');
   }
 
   public function showFeedWidget() {
     $twig = $this->get('twig');
-    return $twig->render('widgets/feed/index.html.twig');
+    return $twig->render('plugins/dashboard/widgets/feed/index.html.twig');
   }
 
   public function fetchFeed() {
