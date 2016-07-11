@@ -1,6 +1,6 @@
 <?php
 
-namespace DashboardPlugin;
+namespace DashboardPlugin\Subscriber;
 
 use Karambol\KarambolApp;
 use Karambol\VirtualSet\ItemCountEvent;
@@ -26,7 +26,7 @@ class DashboardAdminMenuSubscriber implements EventSubscriberInterface {
     foreach($menuItems as $item) {
       if($item->getName() === Menu\MenuItems::ADMIN_PLUGINS) {
         $urlGen = $this->app['url_generator'];
-        $widgetsItem = new Menu\MenuItem('plugins.dashboard.widgets', $urlGen->generate('admin_plugins_dashboard_widget_blueprints_list'), [
+        $widgetsItem = new Menu\MenuItem('plugins.dashboard.widget_blueprints', $urlGen->generate('admin_plugins_dashboard_widget_blueprints_list'), [
           'icon_class' => 'fa fa-puzzle-piece'
         ]);
         $item->addItem($widgetsItem);

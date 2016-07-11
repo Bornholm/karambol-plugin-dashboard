@@ -7,6 +7,7 @@ use Karambol\KarambolApp;
 use Karambol\Menu as Menu;
 use Karambol\Menu\Menus;
 use DashboardPlugin\Provider\DashboardServiceProvider;
+use DashboardPlugin\Subscriber as Subscriber;
 
 class DashboardPlugin implements PluginInterface
 {
@@ -33,10 +34,10 @@ class DashboardPlugin implements PluginInterface
 
   public function addSubscribers(KarambolApp $app) {
     $app['menus']->getMenu(Menus::ADMIN_MAIN)
-      ->addSubscriber(new DashboardAdminMenuSubscriber($app))
+      ->addSubscriber(new Subscriber\DashboardAdminMenuSubscriber($app))
     ;
-    $app['pages']->addSubscriber(new DashboardPagesSubscriber($app));
-    $app['dashboard']->getBlueprints()->addSubscriber(new WidgetBlueprintsSubscriber($app));
+    $app['pages']->addSubscriber(new Subscriber\DashboardPagesSubscriber($app));
+    $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\WidgetBlueprintsSubscriber($app));
   }
 
   public function addControllers(KarambolApp $app) {

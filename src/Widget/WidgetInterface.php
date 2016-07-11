@@ -4,10 +4,11 @@ namespace DashboardPlugin\Widget;
 
 interface WidgetInterface {
 
-  public function getName();
-  public function getColumn();
+  public function getLabel();
+  public function getOrder();
   public function getRow();
-  public function getWidth();
+  public function getColumnWidth();
+  public function getHeight();
   public function getUrl();
   public function getOptions();
 

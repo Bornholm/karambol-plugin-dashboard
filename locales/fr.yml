@@ -3,14 +3,14 @@ pages:
     dashboard: Tableau de bord
 plugins:
   dashboard:
-    widgets: Widgets
+    widget_blueprints: Modèles de widget
     admin:
       widgets:
         name: Nom du widget
         description: Description
         url: URL
         actions: Actions
-        add_widget: Ajouter un widget
+        add_widget: Ajouter un modèle de widget
         system_widget: Widget système
         system_widget_help: Ceci est un widget "système", fourni automatiquement par un des plugins de Karambol. Il n'est pas éditable.
       blueprints:

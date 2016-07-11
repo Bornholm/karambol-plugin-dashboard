@@ -1,6 +1,6 @@
 <?php
 
-namespace DashboardPlugin;
+namespace DashboardPlugin\Subscriber;
 
 use Karambol\KarambolApp;
 use Karambol\VirtualSet\ItemCountEvent;

@@ -4,29 +4,39 @@ namespace DashboardPlugin\Widget;
 
 class Widget implements WidgetInterface {
 
-  protected $name;
-  protected $width = 12;
-  protected $column = 0;
+  protected $label;
+  protected $columnWidth = 12;
+  protected $height = null;
+  protected $order = 0;
   protected $row = 0;
   protected $url;
   protected $options = [];
 
-  public function setName($name) {
-    $this->name = $name;
+  public function setLabel($label) {
+    $this->label = $label;
     return $this;
   }
 
-  public function getName() {
-    return $this->name;
+  public function getLabel() {
+    return $this->label;
   }
 
-  public function setWidth($width) {
-    $this->width = $width;
+  public function setHeight($height) {
+    $this->height = $height;
     return $this;
   }
 
-  public function getWidth() {
-    return $this->width;
+  public function getHeight() {
+    return $this->height;
+  }
+
+  public function setColumnWidth($columnWidth) {
+    $this->columnWidth = $columnWidth;
+    return $this;
+  }
+
+  public function getColumnWidth() {
+    return $this->columnWidth;
   }
 
   public function setRow($row) {
@@ -38,13 +48,13 @@ class Widget implements WidgetInterface {
     return $this->row;
   }
 
-  public function setColumn($column) {
-    $this->column = $column;
+  public function setOrder($order) {
+    $this->order = $order;
     return $this;
   }
 
-  public function getColumn() {
-    return $this->column;
+  public function getOrder() {
+    return $this->order;
   }
 
   public function setUrl($url) {
