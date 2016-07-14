@@ -1,0 +1,39 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <a class="pull-left" href="{{ path("admin_plugins_dashboard_widget_blueprints_list") }}">
+        <i class="fa fa-chevron-left"></i> {{ 'plugins.dashboard.admin.widget_blueprints.back_to_list'|trans }}
+      </a>
+      {% if entity is defined %}
+        {{ form(entityDeleteForm, {'attr': {'class': 'form-inline pull-right'}}) }}
+      {% endif %}
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <h2>{{ entity is defined ? 'plugins.dashboard.admin.widget_blueprints.edit_blueprint'|trans({ '%name%': entity.name }) : 'plugins.dashboard.admin.widget_blueprints.new_blueprint'|trans }}</h2>
+    </div>
+  </div>
+  {{ form_start(entityEditForm) }}
+  <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+      {{ form_row(entityEditForm.name) }}
+    </div>
+    <div class="col-md-3">
+      {{ form_row(entityEditForm.description) }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      {{ form_row(entityEditForm.url) }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="pull-right clearfix">
+        {{ form_end(entityEditForm, {"render_rest": true}) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

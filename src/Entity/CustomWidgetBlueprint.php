@@ -19,22 +19,27 @@ class CustomWidgetBlueprint implements WidgetBlueprintInterface {
   protected $id;
 
   /**
-   * @ORM\Column(type="name", nullable=false)
+   * @ORM\Column(type="string", length=50, nullable=false)
    */
   protected $name;
 
   /**
-   * @ORM\Column(type="description", nullable=false)
+   * @ORM\Column(type="text", nullable=false)
    */
   protected $description;
 
   /**
-   * @ORM\Column(type="url", nullable=false)
+   * @ORM\Column(type="text", length=254, nullable=false)
    */
   protected $url;
 
   public function getId() {
     return $this->id;
+  }
+
+  public function setName($name) {
+    $this->name = $name;
+    return $this;
   }
 
   public function getName() {

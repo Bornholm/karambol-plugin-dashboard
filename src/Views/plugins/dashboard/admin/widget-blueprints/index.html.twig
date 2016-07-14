@@ -6,7 +6,7 @@
       <div class="pull-right">
         <a class="btn btn-primary" href="{{ path('admin_plugins_dashboard_widget_blueprints_new') }}">
           <i class="fa fa-plus"></i>&nbsp;
-          {{ 'plugins.dashboard.admin.widgets.add_widget'|trans }}
+          {{ 'plugins.dashboard.admin.widget_blueprints.add_blueprint'|trans }}
         </a>
       </div>
     </div>
@@ -17,24 +17,24 @@
         <table class="table table-hovered">
           <thead>
             <tr>
-              <th>{{ 'plugins.dashboard.admin.widgets.name'|trans }}</th>
-              <th>{{ 'plugins.dashboard.admin.widgets.description'|trans }}</th>
-              <th>{{ 'plugins.dashboard.admin.widgets.url'|trans }}</th>
-              <th>{{ 'plugins.dashboard.admin.widgets.actions'|trans }}</th>
+              <th>{{ 'plugins.dashboard.admin.widget_blueprints.name'|trans }}</th>
+              <th>{{ 'plugins.dashboard.admin.widget_blueprints.description'|trans }}</th>
+              <th>{{ 'plugins.dashboard.admin.widget_blueprints.url'|trans }}</th>
+              <th>{{ 'plugins.dashboard.admin.widget_blueprints.actions'|trans }}</th>
             </tr>
           </thead>
           <tbody>
-            {% for widget in entities %}
+            {% for blueprint in entities %}
               <tr>
-                <td>{{widget.name}}</td>
-                <td>{{widget.description}}</td>
-                <td>{{widget.url}}</td>
+                <td>{{blueprint.name}}</td>
+                <td>{{blueprint.description}}</td>
+                <td>{{blueprint.url}}</td>
                 <td>
-                  {% if widget.id is defined %}
-                    <a href="{{ path('admin_plugins_dashboard_widget_blueprints_edit', {'entityId': page.id}) }}"
-                      class="btn btn-primary btn-xs">{{ 'plugins.dashboard.admin.widgets.edit_widget'|trans }}</a>
+                  {% if blueprint.id is defined %}
+                    <a href="{{ path('admin_plugins_dashboard_widget_blueprints_edit', {'entityId': blueprint.id}) }}"
+                      class="btn btn-primary btn-xs">{{ 'plugins.dashboard.admin.widget_blueprints.edit_blueprint'|trans }}</a>
                   {% else %}
-                    <span title="{{'plugins.dashboard.admin.widgets.system_widget_help'|trans}}" class="fa fa-question-circle"></span> <i>{{'plugins.dashboard.admin.widgets.system_widget'|trans}}</i>
+                    <span title="{{'plugins.dashboard.admin.widget_blueprints.system_widget_help'|trans}}" class="fa fa-question-circle"></span> <i>{{'plugins.dashboard.admin.widget_blueprints.system_widget'|trans}}</i>
                   {% endif %}
                 </td>
               </tr>

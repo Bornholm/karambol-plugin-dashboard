@@ -13,6 +13,7 @@ class DashboardPlugin implements PluginInterface
 {
 
   public function boot(KarambolApp $app, array $options) {
+    $this->addEntities($app);
     $this->addServices($app);
     $this->addSubscribers($app);
     $this->addPluginViews($app);
@@ -28,6 +29,11 @@ class DashboardPlugin implements PluginInterface
     }));
   }
 
+  public function addEntities(KarambolApp $app) {
+    $annotationDriver = $app['orm']->getConfiguration()->getMetadataDriverImpl();
+    $annotationDriver->addPaths([__DIR__.'/Entity']);
+  }
+
   public function addServices(KarambolApp $app) {
     $app->register(new DashboardServiceProvider());
   }
@@ -37,7 +43,8 @@ class DashboardPlugin implements PluginInterface
       ->addSubscriber(new Subscriber\DashboardAdminMenuSubscriber($app))
     ;
     $app['pages']->addSubscriber(new Subscriber\DashboardPagesSubscriber($app));
-    $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\WidgetBlueprintsSubscriber($app));
+    $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\BaseWidgetBlueprintsSubscriber($app));
+    $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\CustomWidgetBlueprintsSubscriber($app));
   }
 
   public function addControllers(KarambolApp $app) {
