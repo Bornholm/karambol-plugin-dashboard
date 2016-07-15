@@ -15,23 +15,7 @@ class DashboardController extends Controller {
   public function showDashboard() {
 
     $twig = $this->get('twig');
-
-    $feed1 = new Widget();
-    $feed1->setLabel('feed1');
-    $feed1->setUrl('/widgets/feed');
-    $feed1->setColumnWidth(6);
-    $feed1->setOptions(['feedUrl' => 'https://linuxfr.org/news.atom']);
-
-    $feed2 = new Widget();
-    $feed2->setLabel('feed2');
-    $feed2->setUrl('/widgets/feed');
-    $feed2->setColumnWidth(6);
-    $feed2->setOrder(2);
-    $feed2->setHeight(500);
-    $feed2->setOptions(['feedUrl' => 'http://korben.info/feed']);
-
-
-    $widgets = [$feed2, $feed1];//$this->get('dashboard')->getWidgets();
+    $widgets = $this->get('dashboard')->getWidgets();
 
     $rows = [];
     foreach($widgets as $widget) {

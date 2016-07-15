@@ -39,12 +39,11 @@ class DashboardPlugin implements PluginInterface
   }
 
   public function addSubscribers(KarambolApp $app) {
-    $app['menus']->getMenu(Menus::ADMIN_MAIN)
-      ->addSubscriber(new Subscriber\DashboardAdminMenuSubscriber($app))
-    ;
+    $app['menus']->getMenu(Menus::ADMIN_MAIN)->addSubscriber(new Subscriber\DashboardAdminMenuSubscriber($app));
     $app['pages']->addSubscriber(new Subscriber\DashboardPagesSubscriber($app));
     $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\BaseWidgetBlueprintsSubscriber($app));
     $app['dashboard']->getBlueprints()->addSubscriber(new Subscriber\CustomWidgetBlueprintsSubscriber($app));
+    $app['rule_engine']->addSubscriber(new Subscriber\DashboardRuleEngineSubscriber($app));
   }
 
   public function addControllers(KarambolApp $app) {

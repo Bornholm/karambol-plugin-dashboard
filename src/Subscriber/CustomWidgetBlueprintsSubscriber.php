@@ -27,7 +27,8 @@ class CustomWidgetBlueprintsSubscriber implements EventSubscriberInterface {
 
   public function onCountItems(ItemCountEvent $event) {
     $orm = $this->app['orm'];
-    return $orm->getRepository('DashboardPlugin\Entity\CustomWidgetBlueprint')->count();
+    $count = $orm->getRepository('DashboardPlugin\Entity\CustomWidgetBlueprint')->count();
+    $event->add($count);
   }
 
 }
